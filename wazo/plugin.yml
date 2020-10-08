@@ -1,0 +1,8 @@
+name: wazo-confd-webrtc
+namespace: sboily
+version: 0.0.1
+author: Sylvain Boily
+display_name: Confd webrtc app
+tags:
+  - application
+homepage: https://github.com/sboily/wazo-confd-webrtc

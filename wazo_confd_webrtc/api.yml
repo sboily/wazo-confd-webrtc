@@ -1,0 +1,93 @@
+paths:
+  /records:
+    get:
+      summary: Get records
+      description: '**Required ACL:** `calld.records.read`'
+      tags:
+      - records
+      responses:
+        '200':
+          description: The list of records
+          schema:
+            $ref: '#/definitions/RecordsList'
+        '503':
+          $ref: '#/responses/AnotherServiceUnavailable'
+  /records/{record_uuid}:
+    get:
+      summary: Get record file
+      description: '**Required ACL:** `calld.records.{record_uuid}.read`'
+      parameters:
+        - $ref: '#/parameters/Record'
+      tags:
+      - records
+      responses:
+        '200':
+          description: Info of a record
+          schema:
+            $ref: '#/definitions/Record'
+        '503':
+          $ref: '#/responses/AnotherServiceUnavailable'
+    delete:
+      summary: Delete record file
+      description: '**Required ACL:** `calld.records.{record_uuid}.delete`'
+      parameters:
+        - $ref: '#/parameters/Record'
+      tags:
+      - records
+      responses:
+        '204':
+          description: Delete a record
+          schema:
+            $ref: '#/definitions/Record'
+        '503':
+          $ref: '#/responses/AnotherServiceUnavailable'
+  /records/{call_id}/start:
+    put:
+      summary: Record a channel
+      description: '**Required ACL:** `calld.records.{call_uuid}.start`'
+      parameters:
+        - $ref: '#/parameters/CallID'
+      tags:
+      - records
+      responses:
+        '204':
+          description: Recording has been started
+          schema:
+            $ref: '#/definitions/Record'
+        '503':
+          $ref: '#/responses/AnotherServiceUnavailable'
+  /records/{call_id}/stop:
+    put:
+      summary: Stop Record a channel
+      description: '**Required ACL:** `calld.records.{call_uuid}.stop`'
+      parameters:
+        - $ref: '#/parameters/CallID'
+      tags:
+      - records
+      responses:
+        '204':
+          description: Recording has been stopped
+          schema:
+            $ref: '#/definitions/Record'
+        '503':
+          $ref: '#/responses/AnotherServiceUnavailable'
+definitions:
+  Record:
+    type: object
+    properties:
+      uuid:
+        description: Unique identifier of the record
+        type: string
+  RecordList:
+    type: object
+    properties:
+      items:
+        $ref: '#/definitions/Record'
+parameters:
+  Record:
+    name: body
+    in: body
+    description: Parameters of the record member
+    required: true
+    schema:
+      $ref: '#/definitions/Record'
