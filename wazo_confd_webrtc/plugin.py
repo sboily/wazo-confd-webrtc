@@ -8,6 +8,9 @@ from wazo_confd.helpers.restful import ItemResource
 
 class WebRTCResource(ItemResource):
 
+    def __init__(self):
+        pass
+
     @required_acl('confd.users.me.read')
     def get(self):
         return {
