@@ -2,11 +2,11 @@
 # Copyright 2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from wazo_calld.auth import required_acl
-from wazo_calld.http import AuthResource
+from wazo_confd.auth import required_acl
+from wazo_confd.helpers.restful import ItemResource
 
 
-class WebRTCResource(AuthResource):
+class WebRTCResource(ItemResource):
 
     @required_acl('confd.users.me.read')
     def get(self):
@@ -27,5 +27,4 @@ class Plugin(object):
 
     def load(self, dependencies):
         api = dependencies['api']
-        api.add_resource(WebRTCResource, '/configuration/webrtc', resource_class_args=[])
-
+        api.add_resource(WebRTCResource, '/configuration/webrtc')
