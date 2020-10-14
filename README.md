@@ -15,10 +15,10 @@ return:
     {
         'stun_server': [
              'stun.wazo.io:443',
-             'stun.l.google.com:19302
+             'stun.l.google.com:19302'
          ],
          'turn_server': [
-             'toto@tutu:turn.wazo.io:443
+             'toto@tutu:turn.wazo.io:443'
          ],
          ice_timeout: 300,
          debug: {
