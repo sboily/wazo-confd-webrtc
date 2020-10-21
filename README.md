@@ -18,7 +18,7 @@ return:
              {urls: 'stun.l.google.com:19302}'
          ],
          'turn_server': [{
-             urls: 'toto@tutu:turn.wazo.io:443',
+             urls: 'turn.wazo.io:443',
              username: 'toto',
              credential: 'toto'
          }],
