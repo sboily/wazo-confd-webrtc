@@ -14,15 +14,17 @@ return:
 
     {
         'stun_server': [
-             'stun.wazo.io:443',
-             'stun.l.google.com:19302'
+             {urls: 'stun.wazo.io:443'},
+             {urls: 'stun.l.google.com:19302}'
          ],
-         'turn_server': [
-             'toto@tutu:turn.wazo.io:443'
-         ],
+         'turn_server': [{
+             urls: 'toto@tutu:turn.wazo.io:443',
+             username: 'toto',
+             credential: 'toto'
+         }],
          ice_timeout: 300,
          debug: {
-             'fluentd': 'https://myfluentd',
+             'fluentd_uri': 'https://myfluentd',
              'level': 'verbose'
          }
     }
